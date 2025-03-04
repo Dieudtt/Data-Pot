@@ -23,9 +23,6 @@ LEFT JOIN DimPromotion AS PT
     ON FI.PromotionKey = PT.PromotionKey
 WHERE PT.DiscountPct >= 0.2
 
-select *
-from DimProduct
-
 ================================================
 
 -- Ex 2: Từ các bảng DimProduct, DimProductSubcategory, DimProductCategory, 
@@ -96,11 +93,6 @@ WHERE ProductKey NOT IN
 )
 
 
-SELECT *
-FROM FactInternetSales
-ORDER BY ProductKey
-
-
 ================================================
 
 -- Ex 4: Từ bảng DimDepartmentGroup, lấy ra thông tin DepartmentGroupKey (PK), DepartmentGroupName, ParentDepartmentGroupKey (FK1)
@@ -115,8 +107,6 @@ LEFT JOIN DimDepartmentGroup AS Parent
 ON Child.ParentDepartmentGroupKey = Parent.DepartmentGroupKey
 
 
-SELECT *
-FROM DimDepartmentGroup
 
 ================================================
 
@@ -136,17 +126,6 @@ Thỏa mãn điều kiện: ScenarioName là 'Actual'
 
 
 *******************************************
-
-SELECT Child.OrganizationKey
-, Child.OrganizationName
-, Child.ParentOrganizationKey
-, Parent.OrganizationName ParentOrganizationName
-FROM DimOrganization AS Child
-LEFT JOIN DimOrganization AS Parent
-ON Child.ParentOrganizationKey = Parent.OrganizationKey
-
-
-
 
 SELECT FF.OrganizationKey
 , FF.Amount
@@ -196,12 +175,3 @@ FROM OrgCTE
 JOIN ScenarioCTE
     ON OrgCTE.OrganizationKey = ScenarioCTE.OrganizationKey
 
-
-
-
-SELECT *
-FROM DimOrganization
-
-
-SELECT *
-FROM FactFinance
