@@ -4,8 +4,6 @@ SELECT Title
 FROM DimEmployee
 GROUP BY Title
 
-SELECT *
-FROM DimEmployee
 
 
 --  Ex 2: Từ bảng FactInternetSales, lấy ra cột TotalOrderQuantity, sử dụng cột OrderQuantity tính tổng số lượng bán ra với từng ProductKey và từng ngày OrderDate
@@ -18,9 +16,6 @@ Sử dụng cột : Order Quantity --> tính tổng : SỐ LƯỢNG BÁN RA vớ
 
 ------------------------------------------
 
-SELECT SUM(OrderQuantity)
-FROM FactInternetSales
-
 SELECT 
     ProductKey, 
     OrderDate, 
@@ -29,8 +24,7 @@ FROM FactInternetSales
 GROUP BY ProductKey, OrderDate
 ORDER BY OrderDate, ProductKey
 
-SELECT 
-FROM FactInternetSales
+
 
 -- Ex3: Từ bảng DimProduct, FactInternetSales, DimProductCategory và các bảng liên quan nếu cần thiết 
 
@@ -75,8 +69,6 @@ WHERE YEAR(FI.OrderDate) = 2012
 GROUP BY YEAR(FI.OrderDate), PS.ProductCategoryKey, PC.EnglishProductCategoryName
 HAVING SUM(FI.SalesAmount) > 5000
 
-SELECT *
-FROM FactInternetSales
 
 
 -- Ex 4: Từ bảng FactInternetSales, DimProduct, 
