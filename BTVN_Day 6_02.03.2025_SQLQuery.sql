@@ -84,23 +84,6 @@ ORDER BY TotalSales DESC
 --  Ex6: Dựa vào 2 bảng DimDepartmentGroup và bảng FactFinace, 
 thực hiện lấy ra TotalAmount (dựa vào Amount) của DepartmentGroupName và ParentDepartmentGroupName 
 
-(SELECT Child.DepartmentGroupKey
-, Child.ParentDepartmentGroupKey
-, Child.DepartmentGroupName
-, Parent.DepartmentGroupName ParentDepartmentGroupName
-FROM DimDepartmentGroup AS Child
-LEFT JOIN DimDepartmentGroup AS Parent
-ON Child.ParentDepartmentGroupKey = Parent.DepartmentGroupKey) AS PGroupName 
-
-
-SELECT FF.Amount
-, SUM(FF.Amount) AS TotalAmount
-FROM FactFinance AS FF 
-LEFT JOIN DimDepartmentGroup AS DG 
-ON FF.DepartmentGroupKey = DG.DepartmentGroupKey
-LEFT JOIN 
-GROUP BY FF.Amount
-
 
 SELECT DG.DepartmentGroupName
 , ParentDG.DepartmentGroupName AS ParentDepartmentGroupName
